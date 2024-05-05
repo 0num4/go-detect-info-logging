@@ -48,12 +48,13 @@ func Run(pass *analysis.Pass) (any, error) {
 		//　AST.fileとかもpass.Filesにある
 		//　TypesInfoにはtypes.Infoとかもある。解析結果
 		// if pass.Analyzer.Requires {
-		inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
+		//inspect := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
+		inspect := inspector.Inspector{}
 		// inspect.Preorderの第一引数はフィルターするastのlist
 		filter := []ast.Node{}
 		inspect.Preorder(filter, inspectInnerWrapper)
 
-		print(inspect)
+		fmt.Println(inspect)
 	}
 	// pass.Reportフィールド(関数を受け取る)か、pass.Reportf()を使ってエラー(Diagnostic)を報告する
 	p := token.Pos(3)
