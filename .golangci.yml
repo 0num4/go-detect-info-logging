@@ -1,0 +1,30 @@
+# linters:
+#   # disable-all: true
+#   enable:
+#     # - gofumpt
+#     # - durationcheck
+#     # - forcetypeassert
+#     # TODO: そのうち入れたいlinterのオプション
+#     # - gocognit
+#     # - goconst
+#     # - gocritic
+#     #   - disabled-checks:
+#     #     - captLocal
+#     # - gochecknoglobals
+#     # - errorlint
+#     # - exhaustive
+#     - funlen
+# issues:
+#   max-same-issues: 0
+#   exclude-rules:
+#     # Exclude some linters from running on tests files.
+#     - path: _test\.go
+#       linters:
+#         - forcetypeassert
+linters-settings:
+  custom:
+    example:
+      type: goplugin
+      path: /Users/oonuma/work/private/go-detect-info-logging/m
+      description: custom linter
+      original-url: github.com/golangci/example-linter
