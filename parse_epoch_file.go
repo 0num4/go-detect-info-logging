@@ -45,7 +45,20 @@ func ParseFile() {
 	}
 	fmt.Println("package is")
 	fmt.Println(p)
+	// ast.Node == ast.Fileなのかな
+	ast.Inspect(file, inspectInner)
 }
+
+func inspectInner(n ast.Node) bool {
+	fmt.Println("inspect inner")
+	fmt.Println(n)
+	return true
+}
+
+//func InspectSrc(file ) {
+//	//astnode := ast.Node()
+//
+//}
 
 func ParseExpr() {
 	fmt.Println("parse_expr")
