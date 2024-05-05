@@ -2,6 +2,8 @@ module github.com/0num4/go-detect-info-logging
 
 go 1.22.0
 
+require github.com/golangci/golangci-lint v1.56.1
+
 require (
 	4d63.com/gocheckcompilerdirectives v1.2.1 // indirect
 	4d63.com/gochecknoglobals v0.2.1 // indirect
@@ -63,7 +65,6 @@ require (
 	github.com/golangci/dupl v0.0.0-20180902072040-3e9179ac440a // indirect
 	github.com/golangci/go-misc v0.0.0-20220329215616-d24fe342adfe // indirect
 	github.com/golangci/gofmt v0.0.0-20231018234816-f50ced29576e // indirect
-	github.com/golangci/golangci-lint v1.56.1 // indirect
 	github.com/golangci/lint-1 v0.0.0-20191013205115-297bf364a8e0 // indirect
 	github.com/golangci/maligned v0.0.0-20180506175553-b1d89398deca // indirect
 	github.com/golangci/misspell v0.4.1 // indirect
