@@ -55,4 +55,8 @@ mkdir -p testdata/src/sampleSrc
 https://github.com/golang/go/tree/master/src/go
 parser.parseFile() とかがある。
 tokenはgo/tokenにある。
+型情報はgo/typesにある。
+configもgo/typesにある。
 
+go/astにもfileが生えててast.Fileでアクセスできる
+go/types.configのconfig.checkのast.Fileにはparser.parseFileの引数の返り値を入れられる

@@ -2,8 +2,11 @@ package main
 
 import (
 	"fmt"
+	"go/ast"
+	"go/importer"
 	"go/parser"
 	"go/token"
+	"go/types"
 )
 
 func ParseFile() {
@@ -15,6 +18,33 @@ func ParseFile() {
 	}
 	fmt.Println(fileset)
 	fmt.Println(file)
+
+	cfg := &types.Config{
+		Context:                  nil,
+		GoVersion:                "1.22",
+		IgnoreFuncBodies:         false,
+		FakeImportC:              false,
+		Error:                    nil,
+		Importer:                 importer.Default(),
+		Sizes:                    nil,
+		DisableUnusedImportCheck: false,
+	}
+	p, err := cfg.Check("main", fileset, []*ast.File{file}, &types.Info{
+		Types:        nil,
+		Instances:    nil,
+		Defs:         nil,
+		Uses:         nil,
+		Implicits:    nil,
+		Selections:   nil,
+		Scopes:       nil,
+		InitOrder:    nil,
+		FileVersions: nil,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("package is")
+	fmt.Println(p)
 }
 
 func ParseExpr() {
@@ -24,9 +54,10 @@ func ParseExpr() {
 		panic(err)
 	}
 	fmt.Println(expr)
+
 }
 
 func main() {
-	//ParseFile()
-	ParseExpr()
+	ParseFile()
+	//ParseExpr()
 }
