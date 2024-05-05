@@ -60,8 +60,9 @@ func inspectInner(n ast.Node) bool {
 		fmt.Println("position of fileset: %v", fileset.Position(n.Pos()))
 		switch expr := n.(type) {
 		case *ast.BinaryExpr:
-
-			println("types: %v", typesinfo.TypeOf(expr))
+			fmt.Println("types: %v", typesinfo.TypeOf(expr))
+		default:
+			fmt.Printf("other Node type: %T\n", n)
 		}
 	}
 	return true
