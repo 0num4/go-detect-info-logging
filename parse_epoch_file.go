@@ -17,6 +17,16 @@ func ParseFile() {
 	fmt.Println(file)
 }
 
+func ParseExpr() {
+	fmt.Println("parse_expr")
+	expr, err := parser.ParseExpr("1*2+3")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(expr)
+}
+
 func main() {
-	ParseFile()
+	//ParseFile()
+	ParseExpr()
 }

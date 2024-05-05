@@ -49,3 +49,10 @@ analysistest.Run(t, testdata, mychecker.Analyzer, "sampleSrc")
 
 適当にディレクトリを作ることで消えた。
 mkdir -p testdata/src/sampleSrc
+
+## 他のparseについて
+標準のgo/parserパッケージに色々入ってる。
+https://github.com/golang/go/tree/master/src/go
+parser.parseFile() とかがある。
+tokenはgo/tokenにある。
+
