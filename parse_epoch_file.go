@@ -61,12 +61,30 @@ func inspectInner(n ast.Node) bool {
 		switch expr := n.(type) {
 		case *ast.BinaryExpr:
 			typ := typesinfo.TypeOf(expr)
+			switch isbasic := typ.(type) {
+			case *types.Basic:
+				println("isbasic: %v", isbasic.Info())
+			default:
+				println("isnotbasic")
+			}
 			fmt.Println("ast.BinaryExpr: %v", typ)
 		case *ast.Ident:
 			typ := typesinfo.TypeOf(expr)
+			switch isbasic := typ.(type) {
+			case *types.Basic:
+				println("isbasic: %v", isbasic.Info())
+			default:
+				println("isnotbasic")
+			}
 			fmt.Println("ast.Ident: %v", typ)
 		case *ast.BasicLit:
 			typ := typesinfo.TypeOf(expr)
+			switch isbasic := typ.(type) {
+			case *types.Basic:
+				println("isbasic: %v", isbasic.Info())
+			default:
+				println("isnotbasic")
+			}
 			fmt.Println("ast.BasicLit: %v", typ)
 		case *ast.CallExpr:
 			typ := typesinfo.TypeOf(expr)
