@@ -18,7 +18,7 @@ var ab = &analysis.Analyzer{
 	Doc:              "this is awesome analyzer",
 	URL:              "https://github.com/0num4",
 	Flags:            flag.FlagSet{},
-	Run:              run,
+	Run:              Run,
 	RunDespiteErrors: false,
 	Requires: []*analysis.Analyzer{
 		inspect.Analyzer,
@@ -70,4 +70,11 @@ func Run(pass *analysis.Pass) (any, error) {
 
 func inspectInnerWrapper(n ast.Node) {
 	inspectInner(n)
+}
+
+func New(conf any) ([]*analysis.Analyzer, error) {
+	fmt.Printf("My configuration (%[1]T): %#[1]v\n", conf)
+	return []*analysis.Analyzer{
+		ab,
+	}, nil
 }
