@@ -21,9 +21,10 @@ var typesinfo = types.Info{
 	FileVersions: nil,
 }
 
+var fileset *token.FileSet = token.NewFileSet()
+
 func ParseFile() {
 	fmt.Println("Hello, World!")
-	fileset := token.NewFileSet()
 	file, err := parser.ParseFile(fileset, "testdata/src/sampleSrc/sampleSrc.go", nil, 0)
 	if err != nil {
 		panic(err)
@@ -56,7 +57,7 @@ func inspectInner(n ast.Node) bool {
 	if n != nil {
 		fmt.Println("inspect inner")
 		fmt.Println("position: %v", n.Pos())
-		//fmt.Println("type: %v", typesinfo.TypeOf(n.(type)))
+		fmt.Println("position of fileset: %v", fileset.Position(n.Pos()))
 		switch expr := n.(type) {
 		case *ast.BinaryExpr:
 
