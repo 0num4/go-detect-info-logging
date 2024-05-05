@@ -3,10 +3,12 @@ package main
 import (
 	"flag"
 	"fmt"
+	"go/token"
+	"testing"
+
 	"golang.org/x/tools/go/analysis"
 	"golang.org/x/tools/go/analysis/analysistest"
 	"golang.org/x/tools/go/analysis/passes/inspect"
-	"testing"
 )
 
 func main() {
@@ -41,12 +43,13 @@ func Run(pass *analysis.Pass) (any, error) {
 
 	if pass != nil {
 		// awesomeAnalyzerが入ってる
-		//if pass.Analyzer.Requires {
+		// if pass.Analyzer.Requires {
 		inspect := pass.ResultOf[inspect.Analyzer]
 		print(inspect)
 	}
-	//pass.Reportフィールド(関数を受け取る)か、pass.Reportf()を使ってエラー(Diagnostic)を報告する
-	pass.Reportf(3, "This is a test error")
+	// pass.Reportフィールド(関数を受け取る)か、pass.Reportf()を使ってエラー(Diagnostic)を報告する
+	p := token.Pos(3)
+	pass.Reportf(p, "This is a test error")
 
 	fmt.Println("Running the analyzer done")
 	return nil, nil
