@@ -60,3 +60,5 @@ configもgo/typesにある。
 
 go/astにもfileが生えててast.Fileでアクセスできる
 go/types.configのconfig.checkのast.Fileにはparser.parseFileの引数の返り値を入れられる
+
+analysis.Analyzerは複数通る想定で作られている

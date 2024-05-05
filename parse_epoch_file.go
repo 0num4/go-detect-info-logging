@@ -56,39 +56,39 @@ func inspectInner(n ast.Node) bool {
 
 	if n != nil {
 		fmt.Println("inspect inner")
-		fmt.Println("position: %v", n.Pos())
-		fmt.Println("position of fileset: %v", fileset.Position(n.Pos()))
+		fmt.Printf("position: %v", n.Pos())
+		fmt.Printf("position of fileset: %v", fileset.Position(n.Pos()))
 		switch expr := n.(type) {
 		case *ast.BinaryExpr:
 			typ := typesinfo.TypeOf(expr)
 			switch isbasic := typ.(type) {
 			case *types.Basic:
-				println("isbasic: %v", isbasic.Info())
+				fmt.Printf("isbasic: %v", isbasic.Info())
 			default:
-				println("isnotbasic")
+				fmt.Printf("isnotbasic")
 			}
-			fmt.Println("ast.BinaryExpr: %v", typ)
+			fmt.Printf("ast.BinaryExpr: %v", typ)
 		case *ast.Ident:
 			typ := typesinfo.TypeOf(expr)
 			switch isbasic := typ.(type) {
 			case *types.Basic:
-				println("isbasic: %v", isbasic.Info())
+				fmt.Printf("isbasic: %v", isbasic.Info())
 			default:
-				println("isnotbasic")
+				fmt.Printf("isnotbasic")
 			}
-			fmt.Println("ast.Ident: %v", typ)
+			fmt.Printf("ast.Ident: %v", typ)
 		case *ast.BasicLit:
 			typ := typesinfo.TypeOf(expr)
 			switch isbasic := typ.(type) {
 			case *types.Basic:
-				println("isbasic: %v", isbasic.Info())
+				fmt.Printf("isbasic: %v", isbasic.Info())
 			default:
-				println("isnotbasic")
+				fmt.Printf("isnotbasic")
 			}
-			fmt.Println("ast.BasicLit: %v", typ)
+			fmt.Printf("ast.BasicLit: %v", typ)
 		case *ast.CallExpr:
 			typ := typesinfo.TypeOf(expr)
-			fmt.Println("ast.CallExpr: %v", typ)
+			fmt.Printf("ast.CallExpr: %v", typ)
 		default:
 			fmt.Printf("other Node type: %T\n", n)
 		}
