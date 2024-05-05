@@ -4,6 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"golang.org/x/tools/go/analysis"
+	"golang.org/x/tools/go/analysis/analysistest"
+	"testing"
 )
 
 func main() {
@@ -11,7 +13,7 @@ func main() {
 }
 
 var a = &analysis.Analyzer{
-	Name:             "awesome analyzer",
+	Name:             "awesomeAnalyzer",
 	Doc:              "",
 	URL:              "https://github.com/0num4",
 	Flags:            flag.FlagSet{},
@@ -22,15 +24,14 @@ var a = &analysis.Analyzer{
 	FactTypes:        nil,
 }
 
-//func New(conf any) []*analysis.Analyzer {
-//	analyzer := &analysis.Analyzer{}
-//	// return analyzer
-//}
-//
-//func Test(t *testing.T) {
-//	testdata := analysistest.TestData()
-//	analysistest.Run(t, testdata)
-//}
+//	func New(conf any) []*analysis.Analyzer {
+//		analyzer := &analysis.Analyzer{}
+//		// return analyzer
+//	}
+func AnalyzerTest(t *testing.T) {
+	testdata := analysistest.TestData()
+	analysistest.Run(t, testdata, a, "a")
+}
 
 func Run(pass *analysis.Pass) (any, error) {
 	// Run the analyzer
