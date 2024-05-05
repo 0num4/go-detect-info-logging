@@ -9,6 +9,18 @@ import (
 	"go/types"
 )
 
+var typesinfo = types.Info{
+	Types:        nil,
+	Instances:    nil,
+	Defs:         nil,
+	Uses:         nil,
+	Implicits:    nil,
+	Selections:   nil,
+	Scopes:       nil,
+	InitOrder:    nil,
+	FileVersions: nil,
+}
+
 func ParseFile() {
 	fmt.Println("Hello, World!")
 	fileset := token.NewFileSet()
@@ -29,17 +41,7 @@ func ParseFile() {
 		Sizes:                    nil,
 		DisableUnusedImportCheck: false,
 	}
-	p, err := cfg.Check("main", fileset, []*ast.File{file}, &types.Info{
-		Types:        nil,
-		Instances:    nil,
-		Defs:         nil,
-		Uses:         nil,
-		Implicits:    nil,
-		Selections:   nil,
-		Scopes:       nil,
-		InitOrder:    nil,
-		FileVersions: nil,
-	})
+	p, err := cfg.Check("main", fileset, []*ast.File{file}, &typesinfo)
 	if err != nil {
 		panic(err)
 	}
@@ -50,8 +52,17 @@ func ParseFile() {
 }
 
 func inspectInner(n ast.Node) bool {
-	fmt.Println("inspect inner")
-	fmt.Println(n)
+
+	if n != nil {
+		fmt.Println("inspect inner")
+		fmt.Println("position: %v", n.Pos())
+		//fmt.Println("type: %v", typesinfo.TypeOf(n.(type)))
+		switch expr := n.(type) {
+		case *ast.BinaryExpr:
+
+			println("types: %v", typesinfo.TypeOf(expr))
+		}
+	}
 	return true
 }
 
