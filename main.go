@@ -12,9 +12,9 @@ func main() {
 	fmt.Println("Hello, World!")
 }
 
-var a = &analysis.Analyzer{
+var ab = &analysis.Analyzer{
 	Name:             "awesomeAnalyzer",
-	Doc:              "",
+	Doc:              "this is awesome analyzer",
 	URL:              "https://github.com/0num4",
 	Flags:            flag.FlagSet{},
 	Run:              Run,
@@ -30,7 +30,7 @@ var a = &analysis.Analyzer{
 //	}
 func AnalyzerTest(t *testing.T) {
 	testdata := analysistest.TestData()
-	analysistest.Run(t, testdata, a, "a")
+	analysistest.Run(t, testdata, ab, "sampleSrc")
 }
 
 func Run(pass *analysis.Pass) (any, error) {
