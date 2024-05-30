@@ -25,6 +25,6 @@ linters-settings:
   custom:
     example:
       type: goplugin
-      path: /Users/oonuma/work/private/go-detect-info-logging/m
+      path: /Users/oonuma/work/private/go-detect-info-logging/main.so
       description: custom linter
       original-url: github.com/golangci/example-linter
