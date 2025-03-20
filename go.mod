@@ -3,7 +3,7 @@ module github.com/0num4/go-detect-info-logging
 go 1.22.0
 
 require (
-	github.com/golangci/golangci-lint v1.59.1
+	github.com/golangci/golangci-lint v1.64.8
 	golang.org/x/tools v0.22.0
 )
 
