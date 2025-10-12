@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	github.com/golangci/golangci-lint v1.59.1
-	golang.org/x/tools v0.22.0
+	golang.org/x/tools v0.38.0
 )
 
 require (
